@@ -1,6 +1,7 @@
 let store = {
     API_URL: 'https://www.breakingbadapi.com/api/characters',
     actors: [],
+    currentActors: [],
     userCategory: '',
     options: [
         {

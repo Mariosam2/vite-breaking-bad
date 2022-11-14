@@ -23,10 +23,8 @@ export default {
             <select-item></select-item>
             <!-- <p>{{ store.userCategory }}</p> -->
             <div class="row row-cols-1 row-cols-md-3 row-cols-xl-5 p-5 g-3 justify-content-center rounded-4">
-                <div class="charsNum text-white fw-bold p-3 w-100 mb-4 rounded-3">Found {{
-                        this.store.currentActors.length
-                }}
-                    characters</div>
+                <div class="charsNum text-white fw-bold p-3 w-100 mb-4 rounded-3">Found
+                    {{ this.store.currentActors.length }} characters</div>
                 <card-item v-for="actor in store.currentActors" :actor="actor" />
             </div>
         </div>

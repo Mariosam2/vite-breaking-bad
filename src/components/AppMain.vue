@@ -1,11 +1,12 @@
 <script>
 import SelectItem from './SelectItem.vue';
 import CardItem from './CardItem.vue';
+import HeadItem from './HeadItem.vue';
 import { store } from '../store.js'
 export default {
     name: 'AppMain',
     components: {
-        SelectItem, CardItem
+        SelectItem, CardItem, HeadItem
     },
     data() {
         return {
@@ -18,6 +19,7 @@ export default {
 <template>
     <main id="site_main">
         <div class="container">
+            <head-item></head-item>
             <select-item></select-item>
             <!-- <p>{{ store.userCategory }}</p> -->
             <div class="row row-cols-1 row-cols-md-3 row-cols-xl-5 p-5 g-3 justify-content-center rounded-4">

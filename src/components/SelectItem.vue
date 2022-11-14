@@ -14,7 +14,6 @@ export default {
             console.log(this.store.userCategory)
             this.store.currentActors = this.store.actors.filter(actor => {
                 //console.log(actor.category)
-
                 return actor.category.includes(this.store.userCategory)
             })
 

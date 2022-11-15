@@ -31,11 +31,16 @@ export default {
                 })
         },
         filterActors() {
-            this.store.loading = true;
-            let formattedCategory = this.store.userCategory.split(' ').join('+');
-            //console.log(formattedCategory);
-            let changedUrl = `${this.store.API_URL}?category=${formattedCategory}`;
-            this.callApi(changedUrl);
+            if (this.store.userCategory !== 'Breaking Bad, Better Call Saul') {
+                this.store.loading = true;
+                let formattedCategory = this.store.userCategory.split(' ').join('+');
+                //console.log(formattedCategory);
+                let changedUrl = `${this.store.API_URL}?category=${formattedCategory}`;
+                this.callApi(changedUrl);
+            } else {
+                this.callApi(this.store.API_URL)
+            }
+
 
         }
     }

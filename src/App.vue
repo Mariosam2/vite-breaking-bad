@@ -18,17 +18,14 @@ export default {
     callApi(url) {
       axios.get(url)
         .then(resp => {
-          //console.log(resp)
           this.store.loading = false;
           this.store.actors = resp.data;
-          //console.log(this.store.actors)
+
         })
         .catch(err => {
-          //console.error(err.message)
           this.store.loading = false;
           this.error = true;
           this.store.errorMsg = err.message;
-          //console.log(this.store.errorMsg)
         })
     }
   },

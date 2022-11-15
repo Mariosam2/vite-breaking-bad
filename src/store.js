@@ -1,5 +1,4 @@
 import { reactive } from 'vue'
-
 export let store = reactive({
     API_URL: 'https://www.breakingbadapi.com/api/characters',
     errorMsg: null,
@@ -16,6 +15,9 @@ export let store = reactive({
             value: 'Better Call Saul',
         },
 
-    ]
+    ],
+
 })
+
+
 

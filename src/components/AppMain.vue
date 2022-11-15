@@ -9,6 +9,7 @@ export default {
     components: {
         SelectItem, CardItem, LoadingItem
     },
+
     data() {
         return {
             store,
@@ -16,12 +17,8 @@ export default {
         }
     },
     methods: {
-        filterActors() {
-            this.store.loading = true;
-            let formattedCategory = this.store.userCategory.split(' ').join('+');
-            //console.log(formattedCategory);
-            let changedUrl = `${this.store.API_URL}?category=${formattedCategory}`
-            axios.get(changedUrl)
+        callApi(url) {
+            axios.get(url)
                 .then(resp => {
                     this.store.loading = false;
                     this.store.actors = resp.data;
@@ -32,6 +29,13 @@ export default {
                     this.error = true;
                     this.store.errorMsg = err.message;
                 })
+        },
+        filterActors() {
+            this.store.loading = true;
+            let formattedCategory = this.store.userCategory.split(' ').join('+');
+            //console.log(formattedCategory);
+            let changedUrl = `${this.store.API_URL}?category=${formattedCategory}`;
+            this.callApi(changedUrl);
 
         }
     }

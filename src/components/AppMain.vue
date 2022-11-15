@@ -11,7 +11,8 @@ export default {
     },
     data() {
         return {
-            store
+            store,
+            error: false,
         }
     },
     methods: {
@@ -28,7 +29,7 @@ export default {
                 })
                 .catch(err => {
                     this.store.loading = false;
-                    this.store.error = true;
+                    this.error = true;
                     this.store.errorMsg = err.message;
                 })
 
@@ -47,11 +48,12 @@ export default {
             <select-item @filter="filterActors"></select-item>
             <!-- <p>{{ store.userCategory }}</p> -->
             <div class="row row-cols-1 row-cols-md-3 row-cols-xl-5 p-3 p-xl-5 g-3 justify-content-center rounded-4"
-                v-if="!store.error">
+                v-if="!error">
                 <div class="charsNum text-white fw-bold p-3 w-100 mb-4 rounded-3">Found
                     {{ this.store.actors.length }} characters</div>
                 <card-item v-for="actor in store.actors" :actor="actor" />
             </div>
+            <div class="text-white error" v-else>{{ store.errorMsg }}</div>
         </div>
     </main>
 

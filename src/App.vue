@@ -11,6 +11,7 @@ export default {
   data() {
     return {
       store,
+      error: false,
     }
   },
   methods: {
@@ -39,7 +40,7 @@ export default {
 </script>
 <template>
   <app-header></app-header>
-  <app-main v-if="!store.error"></app-main>
+  <app-main v-if="!error"></app-main>
   <div class="text-white error" v-else>{{ store.errorMsg }}</div>
 
 </template>

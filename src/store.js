@@ -1,4 +1,5 @@
 import { reactive } from 'vue'
+import axios from 'axios';
 export let store = reactive({
     API_URL: 'https://www.breakingbadapi.com/api/characters',
     errorMsg: null,
@@ -22,6 +23,19 @@ export let store = reactive({
     ],
 
 })
+
+export function callApi(url) {
+    axios.get(url)
+        .then(resp => {
+            store.loading = false;
+            store.actors = resp.data;
+
+        })
+        .catch(err => {
+            store.loading = false;
+            store.errorMsg = err.message;
+        })
+}
 
 
 

@@ -2,8 +2,9 @@
 import SelectItem from './SelectItem.vue';
 import LoadingItem from './LoadingItem.vue';
 import CardItem from './CardItem.vue';
-import { store } from '../store.js';
-import axios from 'axios';
+import { store, callApi } from '../store.js';
+
+
 export default {
     name: 'AppMain',
     components: {
@@ -13,32 +14,19 @@ export default {
     data() {
         return {
             store,
-            error: false,
         }
     },
     methods: {
-        callApi(url) {
-            axios.get(url)
-                .then(resp => {
-                    this.store.loading = false;
-                    this.store.actors = resp.data;
-
-                })
-                .catch(err => {
-                    this.store.loading = false;
-                    this.error = true;
-                    this.store.errorMsg = err.message;
-                })
-        },
         filterActors() {
             if (this.store.userCategory !== 'Breaking Bad, Better Call Saul') {
                 this.store.loading = true;
                 let formattedCategory = this.store.userCategory.split(' ').join('+');
                 //console.log(formattedCategory);
                 let changedUrl = `${this.store.API_URL}?category=${formattedCategory}`;
-                this.callApi(changedUrl);
+                callApi(changedUrl);
             } else {
-                this.callApi(this.store.API_URL)
+                this.store.loading = true;
+                callApi(this.store.API_URL)
             }
 
 
@@ -57,7 +45,7 @@ export default {
             <select-item @filter="filterActors"></select-item>
             <!-- <p>{{ store.userCategory }}</p> -->
             <div class="row row-cols-1 row-cols-md-3 row-cols-xl-5 p-3 p-xl-5 g-3 justify-content-center rounded-4"
-                v-if="!error">
+                v-if="store.errorMsg === null">
                 <div class="charsNum text-white fw-bold p-3 w-100 mb-4 rounded-3">Found
                     {{ this.store.actors.length }} characters</div>
                 <card-item v-for="actor in store.actors" :actor="actor" />

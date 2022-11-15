@@ -20,11 +20,14 @@ export default {
           //console.log(resp)
           this.store.loading = false;
           this.store.actors = resp.data;
-          this.store.currentActors = resp.data;
           //console.log(this.store.actors)
         })
         .catch(err => {
-          console.error(err.message)
+          //console.error(err.message)
+          this.store.loading = false;
+          this.error = true;
+          this.store.errorMsg = err.message;
+          //console.log(this.store.errorMsg)
         })
     }
   },
@@ -36,7 +39,8 @@ export default {
 </script>
 <template>
   <app-header></app-header>
-  <app-main></app-main>
+  <app-main v-if="!store.error"></app-main>
+  <div class="text-white error" v-else>{{ store.errorMsg }}</div>
 
 </template>
 <style lang="scss">

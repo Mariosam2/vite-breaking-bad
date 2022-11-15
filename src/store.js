@@ -2,9 +2,10 @@ import { reactive } from 'vue'
 
 export let store = reactive({
     API_URL: 'https://www.breakingbadapi.com/api/characters',
+    error: false,
+    errorMsg: null,
     loading: true,
     actors: null,
-    currentActors: null,
     userCategory: '',
     options: [
         {

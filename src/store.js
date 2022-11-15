@@ -1,7 +1,10 @@
-let store = {
+import { reactive } from 'vue'
+
+export let store = reactive({
     API_URL: 'https://www.breakingbadapi.com/api/characters',
-    actors: [],
-    currentActors: [],
+    loading: true,
+    actors: null,
+    currentActors: null,
     userCategory: '',
     options: [
         {
@@ -12,11 +15,7 @@ let store = {
             text: 'Better Call Saul',
             value: 'Better Call Saul',
         },
-        {
-            text: 'Breaking Bad, Better Call Saul',
-            value: 'Breaking Bad, Better Call Saul',
-        }
-    ]
-}
 
-export { store };
+    ]
+})
+

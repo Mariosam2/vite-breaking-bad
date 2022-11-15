@@ -1,17 +1,16 @@
 <script>
+import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
-import LoadingItem from './components/LoadingItem.vue';
 import axios from 'axios';
 import { store } from './store.js'
 export default {
   name: 'App',
   components: {
-    AppMain, LoadingItem
+    AppMain, AppHeader
   },
   data() {
     return {
       store,
-      loading: true,
     }
   },
   methods: {
@@ -19,7 +18,7 @@ export default {
       axios.get(url)
         .then(resp => {
           //console.log(resp)
-          this.loading = false;
+          this.store.loading = false;
           this.store.actors = resp.data;
           this.store.currentActors = resp.data;
           //console.log(this.store.actors)
@@ -36,8 +35,8 @@ export default {
 }
 </script>
 <template>
-  <loading-item v-if="loading"></loading-item>
-  <app-main v-else></app-main>
+  <app-header></app-header>
+  <app-main></app-main>
 
 </template>
 <style lang="scss">

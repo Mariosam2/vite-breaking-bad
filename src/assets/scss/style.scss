@@ -30,6 +30,11 @@ body {
     >* {
         margin-bottom: 1rem;
     }
+
+    img {
+        height: 360px;
+        object-fit: cover;
+    }
 }
 
 .caption {

@@ -5,7 +5,7 @@ export default {
 </script>
 
 <template>
-    <div class="loading text-white">Loading...</div>
+    <div class="loading text-white fw-bold fs-2">Loading...</div>
 </template>
 
 <style lang="scss" scoped>

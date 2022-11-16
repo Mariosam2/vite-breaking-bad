@@ -1,7 +1,7 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
-import { store, callApi } from './store.js'
+import { store } from './store.js'
 export default {
   name: 'App',
   components: {
@@ -14,7 +14,7 @@ export default {
     }
   },
   mounted() {
-    callApi(this.store.API_URL)
+    this.store.callApi(this.store.API_URL)
     //console.log(this.store.actors)
   }
 }

@@ -21,21 +21,23 @@ export let store = reactive({
         },
 
     ],
+    callApi(url) {
+        axios.get(url)
+            .then(resp => {
+                store.loading = false;
+                store.actors = resp.data;
+
+            })
+            .catch(err => {
+                store.loading = false;
+                store.errorMsg = err.message;
+            })
+    }
+
 
 })
 
-export function callApi(url) {
-    axios.get(url)
-        .then(resp => {
-            store.loading = false;
-            store.actors = resp.data;
 
-        })
-        .catch(err => {
-            store.loading = false;
-            store.errorMsg = err.message;
-        })
-}
 
 
 

@@ -2,7 +2,7 @@
 import SelectItem from './SelectItem.vue';
 import LoadingItem from './LoadingItem.vue';
 import CardItem from './CardItem.vue';
-import { store, callApi } from '../store.js';
+import { store } from '../store.js';
 
 
 export default {
@@ -23,10 +23,10 @@ export default {
                 let formattedCategory = this.store.userCategory.split(' ').join('+');
                 //console.log(formattedCategory);
                 let changedUrl = `${this.store.API_URL}?category=${formattedCategory}`;
-                callApi(changedUrl);
+                this.store.callApi(changedUrl);
             } else {
                 this.store.loading = true;
-                callApi(this.store.API_URL)
+                this.store.callApi(this.store.API_URL)
             }
 
 

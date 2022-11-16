@@ -8,6 +8,10 @@ export let store = reactive({
     userCategory: '',
     options: [
         {
+            text: 'All',
+            value: '',
+        },
+        {
             text: 'Breaking Bad',
             value: 'Breaking Bad',
         },
@@ -15,10 +19,7 @@ export let store = reactive({
             text: 'Better Call Saul',
             value: 'Better Call Saul',
         },
-        {
-            text: 'Breaking Bad, Better Call Saul',
-            value: 'Breaking Bad, Better Call Saul',
-        },
+
 
     ],
     callApi(url) {

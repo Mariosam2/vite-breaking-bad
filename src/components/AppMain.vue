@@ -18,14 +18,13 @@ export default {
     },
     methods: {
         filterActors() {
-            if (this.store.userCategory !== 'Breaking Bad, Better Call Saul') {
-                this.store.loading = true;
-                let formattedCategory = this.store.userCategory.split(' ').join('+');
+            this.store.loading = true;
+            if (this.store.userCategory !== '') {
+                //let formattedCategory = this.store.userCategory.split(' ').join('+');
                 //console.log(formattedCategory);
-                let changedUrl = `${this.store.API_URL}?category=${formattedCategory}`;
+                let changedUrl = `${this.store.API_URL}?category=${this.store.userCategory}`;
                 this.store.callApi(changedUrl);
             } else {
-                this.store.loading = true;
                 this.store.callApi(this.store.API_URL)
             }
 
